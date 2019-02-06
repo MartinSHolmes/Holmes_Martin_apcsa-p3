@@ -27,8 +27,6 @@ public class Variables
 		char charOne = 'A';
 		boolean booleanOne = true;
 		String stringOne = "hi how are you";
-		
-
 
 		//decimal variables
 

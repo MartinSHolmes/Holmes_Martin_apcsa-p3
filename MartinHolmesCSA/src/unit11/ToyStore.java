@@ -3,11 +3,7 @@ package unit11;
 //www.apluscompsci.com
 //Name -
 
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
-import static java.lang.System.*;
+import java.util.*;
 
 
 public class ToyStore

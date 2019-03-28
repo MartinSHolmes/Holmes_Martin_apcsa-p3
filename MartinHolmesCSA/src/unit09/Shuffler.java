@@ -1,5 +1,4 @@
 package unit09;
-import java.util.Random;
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -9,13 +8,13 @@ public class Shuffler {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 1;
+	private static final int SHUFFLE_COUNT = 8;
 
 	/**
 	 * The number of values to shuffle.
 	 */
-	private static final int VALUE_COUNT = 4;
-
+	private static final int VALUE_COUNT = 52;
+	
 	/**
 	 * Tests shuffling methods.
 	 * @param args is not used.
@@ -62,17 +61,32 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-		int[] shuffled = new int[52];
-		int k = 0;
-		for (int j=0; j<=25;j++) {
-			values[j]=shuffled[k];
-			k = k+2;
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		//keep track of index in the unshuffled deck 
+		int indexUnshuffled = 0;
+		int[] shuffled = new int[VALUE_COUNT];
+		boolean isEven = true;
+		
+		if(values.length % 2 == 1) isEven = false;
+		
+		//once we've filled in all the even spaces, reset i to 1 and start again
+		//different cases for even or odd number of elements
+		for(int i = 0; i < values.length; i = i + 2) //placing cards in shuffled
+		{
+			shuffled[i] = values[indexUnshuffled];
+			//reset the index instead of running 2 different for loops
+			//need to check if it's even b/c it will execute if it's odd on second time around
+			if(isEven && i == values.length-2) i = -1; //-1 instead of 1 b/c the loop will add 2 to i
+			//this only happens when there's an odd # of elements (check if it's odd to run)
+			if(!isEven && i == values.length-1) i = -1; 
+			indexUnshuffled++;	
 		}
-		k=1;
-		for (int j=0; j<=25;j++) {
-			values[j]=shuffled[k];
-			k=k+2;
+		//move everything back to values
+		for(int j = 0; j < values.length; j++)
+		{
+			values[j] = shuffled[j];
 		}
+		
 	}
 
 	/**
@@ -87,18 +101,15 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-		int[] shuffled = new int[52];
-		for (int k=0;k<=51; k++) {
-			Random r = new Random();
-			int j=r.nextInt(51);
-			while (values[j]==-1) {
-				j=(int) (r.nextInt(51));
-			}
-			shuffled[k]=values[j];
-			values[j]=-1;
-		}
-		for (int i=0; i<values.length;i++) {
-			values[i]=shuffled[i];
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		for(int i = values.length-1; i >= 0; i--)
+		{
+			//generate a random number between 0 and i (inclusive)
+			int rand = (int)(Math.random()*(i+1));
+			//swap values of values[rand] and values[i]
+			int save = values[i];
+			values[i] = values[rand];
+			values[rand] = save;
 		}
 	}
 }

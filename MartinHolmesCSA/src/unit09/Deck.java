@@ -1,6 +1,5 @@
 package unit09;
 import java.util.List;
-import java.util.Random;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +12,8 @@ public class Deck {
 	/**
 	 * cards contains all the cards in the deck.
 	 */
-	private List<Card> cards;
+	private List<Card> cards = new ArrayList<Card>();
+	//private Card[] cards;
 
 	/**
 	 * size is the number of not-yet-dealt cards.
@@ -21,7 +21,7 @@ public class Deck {
 	 * The next card to be dealt is at size - 1.
 	 */
 	private int size;
-
+	private int origSize;
 
 	/**
 	 * Creates a new <code>Deck</code> instance.<BR>
@@ -32,14 +32,32 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-		ArrayList<Card> cards = new ArrayList<Card>();
-		for (int i =0; i<ranks.length;i++) {
-			for (int j=0; j<suits.length;j++) {
-				cards.add(new Card(ranks[i], suits[j], values[i]));
+		
+		
+		//array version
+		/*size = ranks.length * suits.length;
+		origSize = size;
+		//size of Card[]
+		cards = new Card[size];*/
+		
+		//create each card
+		//int pos = 0; //counts up to store each card in a slot in cards
+		
+		for(int i = 0; i < suits.length; i++)
+		{
+			for(int j = 0; j < ranks.length; j++)
+			{
+				//array version
+				//cards[pos] = new Card(ranks[j], suits[i], values[j]);
+				//pos++;
+				//list version
+				cards.add(new Card(ranks[j], suits[i], values[j]));
+				
 			}
 		}
+		
 		size = cards.size();
-		shuffle();
+		origSize = size;
 	}
 
 
@@ -48,10 +66,12 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		if(size==0) {
-			return true;
-		}
-		return false;
+		//array version
+		//if(size == 0) return true;
+		
+		//list version
+		if(cards.size() == 0) return true;
+		return false;	
 	}
 
 	/**
@@ -67,12 +87,29 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		for (int i=size-1;i>=1;i--) {
-			int random = (int) Math.round(Math.random()*i);
-			Card temp = cards.get(i);
-			cards.set(i, cards.get(random));
-			cards.set(random, temp);
+		//array version
+		/*for(int i = size-1; i > 0; i--)
+		{
+			int r = (int)(Math.random()*(i+1));
+			Card save = cards[i];
+			cards[i] = cards[r];
+			cards[r] = save;
 		}
+		//resetting value of size to the original size
+		size = origSize;*/
+		
+		//list version
+		
+		  for(int i = cards.size()-1; i > 0; i--)
+		  {
+		  	int r = (int)(Math.random()*(i+1));
+		  	Card save = cards.get(i);
+		  	cards.set(i, cards.get(r));
+		  	cards.set(r, save);
+		  }
+		  
+		  size = origSize;
+		 
 	}
 
 	/**
@@ -81,29 +118,21 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		if(size>0) {
+		//array version
+		/*if(size > 0) size--;
+		else return null;
+		return cards[size];*/
+		
+		//list version
+		if(cards.size() > 0)
+		{
+			Card d = cards.get(size-1);
 			size--;
-			return cards.get(size);
+			return d;
 		}
-		else {
-			return null;
-		}
+		else return null;
 	}
-	public static void selectionShuffle(int[] values) {
-		int[] shuffled = new int[52];
-		for (int k=0;k<=51; k++) {
-			Random r = new Random();
-			int j=r.nextInt(51);
-			while (values[j]==-1) {
-				j=(int) (r.nextInt(51));
-			}
-			shuffled[k]=values[j];
-			values[j]=-1;
-		}
-		for (int i=0; i<values.length;i++) {
-			values[i]=shuffled[i];
-		}
-	}
+
 	/**
 	 * Generates and returns a string representation of this deck.
 	 * @return a string representation of this deck.
@@ -112,6 +141,30 @@ public class Deck {
 	public String toString() {
 		String rtn = "size = " + size + "\nUndealt cards: \n";
 
+		//array version
+		/*for (int k = size - 1; k >= 0; k--) {
+			rtn = rtn + cards[k];
+			if (k != 0) {
+				rtn = rtn + ", ";
+			}
+			if ((size - k) % 2 == 0) {
+				// Insert carriage returns so entire deck is visible on console.
+				rtn = rtn + "\n";
+			}
+		}
+		rtn = rtn + "\nDealt cards: \n";
+		for (int k = cards.length - 1; k >= size; k--) {
+			rtn = rtn + cards[k];
+			if (k != size) {
+				rtn = rtn + ", ";
+			}
+			if ((k - cards.length) % 2 == 0) {
+				// Insert carriage returns so entire deck is visible on console.
+				rtn = rtn + "\n";
+			}
+		}*/
+		
+		//list version
 		for (int k = size - 1; k >= 0; k--) {
 			rtn = rtn + cards.get(k);
 			if (k != 0) {
@@ -129,12 +182,12 @@ public class Deck {
 			if (k != size) {
 				rtn = rtn + ", ";
 			}
-			if ((k - cards.size()) % 2 == 0) {
+			if ((k - size) % 2 == 0) {
 				// Insert carriage returns so entire deck is visible on console.
 				rtn = rtn + "\n";
 			}
 		}
-
+		
 		rtn = rtn + "\n";
 		return rtn;
 	}

@@ -33,8 +33,9 @@ public class Card {
 	 *                  containing the point value of the card
 	 */
 	public Card(String cardRank, String cardSuit, int cardPointValue) {
-		suit = cardSuit;
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
 		rank = cardRank;
+		suit = cardSuit;
 		pointValue = cardPointValue;
 	}
 
@@ -44,6 +45,7 @@ public class Card {
 	 * @return this <code>Card's</code> suit.
 	 */
 	public String suit() {
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
 		return suit;
    }
 
@@ -52,6 +54,7 @@ public class Card {
 	 * @return this <code>Card's</code> rank.
 	 */
 	public String rank() {
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
 		return rank;
 	}
 
@@ -60,6 +63,7 @@ public class Card {
 	 * @return this <code>Card's</code> point value.
 	 */
 	public int pointValue() {
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
 		return pointValue;
 	}
 
@@ -70,9 +74,11 @@ public class Card {
 	 *         false otherwise.
 	 */
 	public boolean matches(Card otherCard) {
-		if (otherCard.rank().equals(rank)&&otherCard.suit().equals(suit)&&otherCard.pointValue()==pointValue) {
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		if(this.suit().equals(otherCard.suit()) 
+				&& this.rank().equals(otherCard.rank()) 
+				&& this.pointValue() == otherCard.pointValue())
 			return true;
-		}
 		return false;
 	}
 
@@ -86,8 +92,9 @@ public class Card {
 	 * @return a <code>String</code> containing the rank, suit,
 	 *         and point value of the card.
 	 */
-	@Override
+	@Override //Object class's toString method is being overridden 
 	public String toString() {
-		return rank + " of " + suit + "(point value = ["+pointValue+"])";
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		return this.rank() + " of " + this.suit() + " (point value = " + this.pointValue() + ")";
 	}
 }

@@ -9,15 +9,25 @@ public class DeckTester {
 	 *	@param args is not used.
 	 */
 	public static void main(String[] args) {
-		Deck carddeck = new Deck(new String[] {"1", "9","King"}, new String [] {"diamons","hearts"}, new int[] {1,2,3});
-		System.out.println(carddeck);
-		carddeck.shuffle();
-		System.out.println(carddeck);
-		carddeck.deal();
-		carddeck.deal();
-		System.out.print(carddeck);
+		Deck myDeck = new Deck(new String[] {"2", "6", "7"}, 
+				new String[] {"hearts", "diamonds"}, 
+				new int[] {1, 6, 7});
+		System.out.println(myDeck);
+		myDeck.shuffle();
+		System.out.println(myDeck);
 		
-		int[] test = new int[52];
-		carddeck.selectionShuffle(test);
+		Deck deckTwo = new Deck(new String[] {"King", "Queen", "Jack"},
+				new String[] {"spades", "hearts", "clubs"},
+				new int[] {11, 12, 13});
+		System.out.println(deckTwo);
+		deckTwo.deal();
+		deckTwo.deal();
+		System.out.println(deckTwo);
+		
+		int temp = myDeck.size();
+		for (int i = 0; i < temp; i++) {
+			myDeck.deal();
+		}
+		System.out.println(myDeck);
 	}
 }

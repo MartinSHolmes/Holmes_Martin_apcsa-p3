@@ -45,5 +45,4 @@ public class MonsterRunner
 			System.out.println("Monster one does not have the same name as Monster two.");
 		}
 	}
-	}
 }

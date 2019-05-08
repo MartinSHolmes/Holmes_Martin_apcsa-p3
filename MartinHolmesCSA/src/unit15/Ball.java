@@ -45,7 +45,12 @@ public class Ball extends Block implements Collidable{
         XSpeed = xs;
         YSpeed = ys;
     }
-
+    public void setSpeedX(int x) {
+    	XSpeed = x;
+    }
+    public void setSpeedY(int y) {
+    	XSpeed = y;
+    }
     public void moveAndDraw(Graphics window) {
         remBall(window);
         setX(getX() + getXSpeed());
@@ -92,24 +97,21 @@ public class Ball extends Block implements Collidable{
         return getX() + " " + getY() + " " + getWidth() + " " + getHeight() + " " + getColor() + " " + getXSpeed() + " " + getYSpeed();
     }
     
-    public boolean didCollideLeft(Object obj){
-        Paddle paddle = (Paddle) obj;
-        if((super.getX() <= paddle.getX() + paddle.getWidth() + Math.abs(getXSpeed())) &&
-               (super.getY() >= paddle.getY() && super.getY() <= paddle.getY() + paddle.getHeight() ||
-                super.getY() + super.getHeight() >= paddle.getY() && super.getY() + super.getHeight() <= paddle.getY() + paddle.getHeight())){
-            return true;
-        }
-        return false;
-    }
-    
-    public boolean didCollideRight(Object obj){
-        Paddle paddle = (Paddle) obj;
-        if((super.getX() + super.getWidth() <= paddle.getX() + Math.abs(getXSpeed())) &&
-               (super.getY() >= paddle.getY() && super.getY() <= paddle.getY() + paddle.getHeight() ||
-                super.getY() + super.getHeight() >= paddle.getY() && super.getY() + super.getHeight() <= paddle.getY() + paddle.getHeight())){
-            return true;
-        }
-        return false;
-    }
+    public boolean didCollideLeft(Object obj) {
+		Block other = (Block)obj;
+		return (getX() <= (other.getX() + other.getWidth() + Math.abs(getXSpeed()))
+				&& getX() > (other.getX() - getWidth() - Math.abs(getXSpeed()))
+				&& getX()>=(other.getX())
+				&& getY()<=(other.getY()+other.getHeight())
+				&& (getY()+getHeight())>=other.getY());
+	}
 
+	public boolean didCollideRight(Object obj) {
+		Block other = (Block)obj;
+		return (getX() < (other.getX() + other.getWidth() + Math.abs(getXSpeed()))
+				&& getX() >= (other.getX() - getWidth() - Math.abs(getXSpeed()))
+				&& getX()<=other.getX()+other.getWidth()
+				&& getY()<=(other.getY()+other.getHeight())
+				&& (getY()+getHeight())>=other.getY());
+	}
 }

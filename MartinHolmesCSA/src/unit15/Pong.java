@@ -66,15 +66,15 @@ public class Pong extends Canvas implements KeyListener, Runnable {
         rightPaddle.draw(graphToBack);
 
         //handle if either paddle goes out of bounds
-//        if(!(leftPaddle.getY() >= 0 && leftPaddle.getY() + leftPaddle.getHeight() <= 600)){
-//            leftPaddle.remPad(window);
-//            leftPaddle.setY(600 - leftPaddle.getY());
-//        }
-//        
-//        if(!(rightPaddle.getY() >= 0 && rightPaddle.getY() + rightPaddle.getHeight() <= 600)){
-//            rightPaddle.remPad(window);
-//            rightPaddle.setY(600 - rightPaddle.getY());
-//        }
+        if(!(leftPaddle.getY() >= 0 && leftPaddle.getY() + leftPaddle.getHeight() <= 600)){
+            leftPaddle.remPad(window);
+            leftPaddle.setY(600 - leftPaddle.getY());
+        }
+       
+        if(!(rightPaddle.getY() >= 0 && rightPaddle.getY() + rightPaddle.getHeight() <= 600)){
+            rightPaddle.remPad(window);
+            rightPaddle.setY(600 - rightPaddle.getY());
+        }
         
         //see if ball hits left wall or right wall
         if (!(ball.getX() >= 0 && ball.getX() <= window.getClipBounds().width - ball.getWidth())) {

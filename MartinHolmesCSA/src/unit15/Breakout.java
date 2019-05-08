@@ -17,7 +17,7 @@ public class Breakout extends Canvas implements KeyListener, Runnable {
 	
 	public Breakout() {
 		ball = new ballextension();
-		mainPaddle = new paddleextension(400, 300, 40, 40, Color.RED, 5);
+		mainPaddle = new paddleextension(400, 300, 40, 40, Color.PINK, 5);
 		keys = new boolean[4];
 		blocks = new ArrayList<Block>();
     
@@ -33,7 +33,7 @@ public class Breakout extends Canvas implements KeyListener, Runnable {
 		//blocks on the left
 		for (int x = 5; x < 105; x += 50) {
 			for (int y = 5; y < 545; y += 140) {
-				blocks.add(new Block(x, y, 45, 130, Color.BLACK));
+				blocks.add(new Block(x, y, 45, 130, Color.RED));
 			}
 		}
 		//blocks on top
@@ -46,14 +46,14 @@ public class Breakout extends Canvas implements KeyListener, Runnable {
 		//blocks on bottom
 		for (int x = 105; x < 595; x += 150) {
 			for (int y = 505; y > 410; y -= 50) {
-				blocks.add(new Block(x, y, 130, 45, Color.BLACK));
+				blocks.add(new Block(x, y, 130, 45, Color.BLUE));
 			}
 		}
 				
 		//blocks on right
 		for (int x = 695; x < 750; x += 50) {
 			for (int y = 5; y < 545; y += 140) {
-				blocks.add(new Block(x, y, 45, 130, Color.BLACK));
+				blocks.add(new Block(x, y, 45, 130, Color.GREEN));
 			}
 		}
 	}
@@ -61,7 +61,7 @@ public class Breakout extends Canvas implements KeyListener, Runnable {
 		//blocks on the left
 		for (int x = 5; x < 85; x += 40) {
 			for (int y = 5; y < 600-55; y += 80) {
-				blocks.add(new Block(x, y, 35, 75, Color.BLACK));
+				blocks.add(new Block(x, y, 35, 75, Color.RED));
 			}
 		}
 		//blocks on top
@@ -74,14 +74,14 @@ public class Breakout extends Canvas implements KeyListener, Runnable {
 		//blocks on bottom
 		for (int x = 85; x < 675; x += 80) {
 			for (int y = 525; y > 445; y -= 40) {
-				blocks.add(new Block(x, y, 75, 35, Color.BLACK));
+				blocks.add(new Block(x, y, 75, 35, Color.BLUE));
 			}
 		}
 				
 		//blocks on right
 		for (int x = 725; x < 800; x += 40) {
 			for (int y = 5; y < 600-55; y += 80) {
-				blocks.add(new Block(x, y, 35, 75, Color.BLACK));
+				blocks.add(new Block(x, y, 35, 75, Color.GREEN));
 			}
 		}
 	}

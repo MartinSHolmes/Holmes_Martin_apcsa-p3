@@ -108,7 +108,16 @@ public class Breakout extends Canvas implements KeyListener, Runnable {
         for (Block b: blocks) {
 			b.draw(graphToBack);
 		}
+        //handle if either paddle goes out of bounds
+        if(!(mainPaddle.getY() >= 0 && mainPaddle.getY() + mainPaddle.getHeight() <= 600)){
+        	mainPaddle.remPad(window);
+        	mainPaddle.setY(600 - mainPaddle.getY());
+        }
        
+        if(!(mainPaddle.getX() >= 0 && mainPaddle.getX() + mainPaddle.getHeight() <= 800)){
+        	mainPaddle.remPad(window);
+        	mainPaddle.setX(800 - mainPaddle.getY());
+        }
         //see if ball hits left wall or right wall
         if(ball.getX()<0)
 		{

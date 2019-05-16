@@ -113,7 +113,6 @@ public class Breakout extends Canvas implements KeyListener, Runnable {
         	mainPaddle.remPad(window);
         	mainPaddle.setY(600 - mainPaddle.getY());
         }
-       
         if(!(mainPaddle.getX() >= 0 && mainPaddle.getX() + mainPaddle.getHeight() <= 800)){
         	mainPaddle.remPad(window);
         	mainPaddle.setX(800 - mainPaddle.getY());

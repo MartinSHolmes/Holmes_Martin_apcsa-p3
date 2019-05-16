@@ -117,7 +117,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		if (horde.touchingShip(graphToBack, ship)) {
 			graphToBack.clearRect(0, 0, 800, 600);
 			graphToBack.setColor(Color.YELLOW);
-			graphToBack.drawString("RIP!", 1000, 1000);
+			graphToBack.drawString("RIP!", 400, 540);
 			horde.Slow();
 			ship.setSpeed(0);
 			shots.Deplete();

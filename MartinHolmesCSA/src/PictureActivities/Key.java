@@ -7,7 +7,7 @@ public class Key {
 	private boolean up;
 	private int upnumber;
 	public Key() {
-		number = (int) (Math.random()*10+1);
+		number = (int) (Math.random()*3+2);
 		colornumber = (int) (Math.random()*3);
 		upnumber = (int) (Math.random()*2);
 		if (colornumber==0) {

@@ -29,6 +29,7 @@ public class PictureTester
 	  what.encode(ew);
 	  what.explore();
 	  what.decode().explore();
+	  
   }
   
   public static void testKeepOnlyBlue() {

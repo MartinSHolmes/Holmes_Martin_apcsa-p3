@@ -1,4 +1,10 @@
 package PictureActivities;
+
+import java.awt.Image;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class 
@@ -12,10 +18,17 @@ public class PictureTester
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
-    Picture beach = new Picture("src/images/beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
-    beach.explore();
+	  Extension beach = new Extension("src/beach.jpg");
+	  Picture image = new Picture("src/msg.jpg");
+	  beach.encode(image);
+	  beach.explore();
+	  beach.decode().explore();
+	  
+	  Extension what = new Extension("src/beach.jpg");
+	  Picture ew = new Picture("src/apple_icon.jpg");
+	  what.encode(ew);
+	  what.explore();
+	  what.decode().explore();
   }
   
   public static void testKeepOnlyBlue() {
@@ -137,7 +150,7 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    //testZeroBlue();
+    testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -153,7 +166,7 @@ public class PictureTester
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-    testCopy();
+    //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
